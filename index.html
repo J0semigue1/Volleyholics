@@ -9,205 +9,506 @@
     <style>
         * {
             box-sizing: border-box;
+            scroll-behavior: smooth;
         }
 
         body {
             margin: 0;
             font-family: Arial, Helvetica, sans-serif;
-            background: #0b0b0b;
+            background: #050505;
             color: white;
         }
 
-        header {
-            min-height: 90vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 30px 20px;
-            background:
-                radial-gradient(circle at center, #183d12 0%, #0b0b0b 55%);
-        }
-        
-        .hero-logo {
-            width: min(500px, 90%);
-            height: auto;
-            margin-bottom: 20px;
-            filter: drop-shadow(0 0 20px rgba(57, 255, 20, 0.35));
-        }
-        .logo {
-            font-size: clamp(45px, 10vw, 90px);
-            font-weight: 900;
-            letter-spacing: -3px;
-            margin: 0;
-            text-transform: uppercase;
-        }
-
-        .green {
-            color: #39ff14;
-            text-shadow: 0 0 15px #39ff14;
-        }
-
-        .tagline {
-            font-size: 20px;
-            color: #cccccc;
-            margin: 15px 0 30px;
-        }
-
-        .button {
-            display: inline-block;
-            padding: 16px 30px;
-            background: #39ff14;
-            color: #080808;
-            font-weight: bold;
-            text-decoration: none;
-            border-radius: 6px;
-            transition: 0.2s;
-        }
-
-        .button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px #39ff14;
-        }
+        /* NAVIGATION */
 
         nav {
-            position: absolute;
-            top: 0;
             width: 100%;
-            padding: 20px;
+            padding: 22px 6%;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: absolute;
+            top: 0;
+            z-index: 10;
         }
 
-        nav strong {
-            font-size: 22px;
+        .nav-links {
+            display: flex;
+            gap: 30px;
         }
 
         nav a {
             color: white;
             text-decoration: none;
-            margin-left: 20px;
+            font-weight: bold;
+            font-size: 14px;
         }
 
+        nav a:hover {
+            color: #39ff14;
+        }
+
+        .nav-brand {
+            color: #39ff14;
+            font-weight: 900;
+            letter-spacing: 1px;
+        }
+
+        /* HERO */
+
+        header {
+            min-height: 100vh;
+            padding: 100px 20px 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(57,255,20,.13),
+                    transparent 40%
+                ),
+                #050505;
+        }
+
+        .hero-logo {
+            width: min(550px, 90%);
+            height: auto;
+            filter:
+                drop-shadow(0 0 20px rgba(0,255,200,.25))
+                drop-shadow(0 0 30px rgba(57,255,20,.15));
+        }
+
+        .tagline {
+            margin-top: 15px;
+            font-size: clamp(14px, 2vw, 20px);
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            color: #ddd;
+        }
+
+        .hero-button {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 16px 32px;
+            background: #39ff14;
+            color: black;
+            font-weight: 900;
+            text-decoration: none;
+            border-radius: 7px;
+            transition: .2s;
+        }
+
+        .hero-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 25px rgba(57,255,20,.6);
+        }
+
+        /* SECTIONS */
+
         section {
-            padding: 70px 20px;
-            max-width: 1100px;
+            padding: 80px 6%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #aaa;
+            margin-bottom: 45px;
+        }
+
+        /* EVENT CARD */
+
+        .event-card {
+            max-width: 1200px;
+            margin: auto;
+            border: 1px solid #39ff14;
+            border-radius: 18px;
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #101718,
+                    #090b0c
+                );
+
+            box-shadow:
+                0 0 40px rgba(57,255,20,.08);
+        }
+
+        .event-main {
+            display: grid;
+            grid-template-columns: 170px 1fr auto;
+            align-items: center;
+            gap: 35px;
+            padding: 40px;
+        }
+
+        /* DATE */
+
+        .event-date {
+            border-right: 2px solid #39ff14;
+            text-align: center;
+            padding-right: 30px;
+        }
+
+        .event-date .month {
+            display: block;
+            color: #39ff14;
+            font-weight: 900;
+            font-size: 24px;
+        }
+
+        .event-date .day {
+            display: block;
+            font-size: 72px;
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        .event-date .year {
+            letter-spacing: 6px;
+            font-size: 17px;
+        }
+
+        /* EVENT INFO */
+
+        .next-event {
+            color: #39ff14;
+            font-weight: bold;
+            letter-spacing: 2px;
+            font-size: 14px;
+        }
+
+        .event-info h2 {
+            font-size: clamp(28px, 4vw, 46px);
+            margin: 8px 0 20px;
+        }
+
+        .event-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            color: #ddd;
+        }
+
+        .event-details div {
+            line-height: 1.6;
+        }
+
+        .address {
+            color: #999;
+            font-size: 14px;
+        }
+
+        .prize {
+            color: #39ff14;
+            font-weight: bold;
+        }
+
+        /* REGISTER */
+
+        .register-button {
+            display: inline-block;
+            background: #39ff14;
+            color: #050505;
+            padding: 18px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 900;
+            white-space: nowrap;
+            transition: .2s;
+        }
+
+        .register-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(57,255,20,.6);
+        }
+
+        /* EVENT FOOTER */
+
+        .event-footer {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            border-top: 1px solid #29402b;
+        }
+
+        .event-footer div {
+            padding: 22px;
+            text-align: center;
+            color: #ddd;
+        }
+
+        .event-footer div:not(:last-child) {
+            border-right: 1px solid #29402b;
+        }
+
+        /* ABOUT */
+
+        #about {
+            max-width: 900px;
             margin: auto;
             text-align: center;
         }
 
-        h2 {
-            font-size: 36px;
-            margin-bottom: 15px;
+        #about p {
+            color: #bbb;
+            font-size: 18px;
+            line-height: 1.8;
         }
 
-        .section-text {
-            color: #bbbbbb;
-            max-width: 650px;
+        /* PHOTOS */
+
+        .coming-soon {
+            max-width: 700px;
             margin: auto;
-            line-height: 1.6;
+            padding: 50px;
+            text-align: center;
+            border: 1px solid #222;
+            border-radius: 15px;
+            background: #0d0d0d;
+            color: #999;
         }
 
-        .events {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 40px;
+        /* CONTACT */
+
+        #contact {
+            text-align: center;
         }
 
-        .event-card {
-            background: #171717;
-            border: 1px solid #292929;
-            padding: 30px;
-            border-radius: 10px;
+        #contact p {
+            color: #aaa;
         }
 
-        .event-card h3 {
-            color: #39ff14;
-        }
+        /* FOOTER */
 
         footer {
             text-align: center;
             padding: 30px;
-            background: #151515;
-            color: #888;
+            border-top: 1px solid #181818;
+            color: #777;
         }
+
+        /* MOBILE */
+
+        @media (max-width: 800px) {
+
+            nav {
+                position: relative;
+                flex-direction: column;
+                gap: 18px;
+            }
+
+            .nav-links {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            header {
+                padding-top: 40px;
+                min-height: auto;
+            }
+
+            .tagline {
+                letter-spacing: 3px;
+            }
+
+            .event-main {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .event-date {
+                border-right: none;
+                border-bottom: 1px solid #39ff14;
+                padding: 0 0 25px;
+            }
+
+            .event-details {
+                justify-content: center;
+            }
+
+            .event-footer {
+                grid-template-columns: 1fr;
+            }
+
+            .event-footer div:not(:last-child) {
+                border-right: none;
+                border-bottom: 1px solid #29402b;
+            }
+        }
+
     </style>
 </head>
 
+
 <body>
 
-    <header>
+    <!-- NAVIGATION -->
 
-        <nav>
-            <strong><span class="green">VOLLEY</span>HOLICS</strong>
+    <nav>
 
-            <div>
-                <a href="#events">Events</a>
-                <a href="#about">About</a>
-            </div>
-        </nav>
-        
-        <img src="Volleyholics_logo.PNG"
-             alt="Volleyholics alien volleyball logo"
-             class="hero-logo">
-        
+        <div class="nav-brand">
+            VOLLEYHOLICS
+        </div>
+
+        <div class="nav-links">
+            <a href="#home">HOME</a>
+            <a href="#events">EVENTS</a>
+            <a href="#photos">PHOTOS</a>
+            <a href="#about">ABOUT</a>
+            <a href="#contact">CONTACT</a>
+        </div>
+
+    </nav>
+
+
+    <!-- HERO -->
+
+    <header id="home">
+
+        <img
+            src="Volleyholics_logo.PNG"
+            alt="Volleyholics alien volleyball logo"
+            class="hero-logo"
+        >
 
         <p class="tagline">
-            DMV Volleyball. Competition. Community.
+            DMV Volleyball · Competition · Community
         </p>
 
-        <a href="#events" class="button">
-            JOIN THE NEXT TOURNAMENT
+        <a href="#events" class="hero-button">
+            NEXT TOURNAMENT ↓
         </a>
 
     </header>
 
 
+    <!-- EVENTS -->
+
     <section id="events">
 
-        <h2>Upcoming Events</h2>
+        <h2 class="section-title">
+            Upcoming Events
+        </h2>
 
-        <p class="section-text">
-            Tournaments, pickup games, and volleyball events
-            for players throughout the DMV.
+        <p class="section-subtitle">
+            Come play. Compete. Meet new players.
         </p>
 
-        <div class="events">
-            
-            <div class="event-card">
-                <h3>🏐 Open Triples</h3>
-            
-                <p><strong>📅 October 10, 2026</strong></p>
-            
-                <p>
-                    📍 Occoquan Regional Park<br>
-                    9751 Ox Rd, Lorton, VA 22079
-                </p>
-            
-                <p><strong>💵 $30 per player</strong></p>
-            
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLScZ177_i--q63PZbojm3n-ShtF-yphQ2sPpruRyPtnYucBWSw/viewform?usp=publish-editor"
-                   class="button"
-                   target="_blank">
-                    REGISTER
-                </a>
+
+        <div class="event-card">
+
+            <div class="event-main">
+
+
+                <!-- DATE -->
+
+                <div class="event-date">
+
+                    <span class="month">
+                        OCT
+                    </span>
+
+                    <span class="day">
+                        10
+                    </span>
+
+                    <span class="year">
+                        2026
+                    </span>
+
+                </div>
+
+
+                <!-- INFORMATION -->
+
+                <div class="event-info">
+
+                    <span class="next-event">
+                        NEXT EVENT
+                    </span>
+
+                    <h2>
+                        Open Triples Tournament
+                    </h2>
+
+                    <div class="event-details">
+
+                        <div>
+                            📍 <strong>Occoquan Regional Park</strong>
+                            <br>
+
+                            <span class="address">
+                                9751 Ox Rd, Lorton, VA 22079
+                            </span>
+                        </div>
+
+
+                        <div>
+                            🏐 <strong>Open Triples</strong>
+                        </div>
+
+
+                        <div>
+                            💵 <strong>$50 per team</strong>
+                        </div>
+
+
+                        <div class="prize">
+                            🏆 Cash + Merch Prizes
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- REGISTER -->
+
+                <div>
+
+                    <a
+                        href="https://docs.google.com/forms/d/e/1FAIpQLScZ177_i--q63PZbojm3n-ShtF-yphQ2sPpruRyPtnYucBWSw/viewform?usp=publish-editor"
+                        target="_blank"
+                        class="register-button"
+                    >
+                        REGISTER →
+                    </a>
+
+                </div>
+
+
             </div>
 
-            <div class="event-card">
-                <h3>🏆 Tournaments</h3>
-                <p>
-                    Competitive volleyball for A, BB+, BB and B level players.
-                </p>
-            </div>
 
-            <div class="event-card">
-                <h3>👥 Free Agents</h3>
-                <p>
-                    Don't have a team? Join as a free agent and meet other players.
-                </p>
+            <!-- BOTTOM EVENT BAR -->
+
+            <div class="event-footer">
+
+                <div>
+                    👥 MEET NEW PLAYERS
+                </div>
+
+                <div>
+                    🏆 CASH + MERCH PRIZES
+                </div>
+
+                <div>
+                    💚 BUILD COMMUNITY
+                </div>
+
             </div>
 
         </div>
@@ -215,22 +516,66 @@
     </section>
 
 
+    <!-- PHOTOS -->
+
+    <section id="photos">
+
+        <h2 class="section-title">
+            Volleyholics Photos
+        </h2>
+
+        <p class="section-subtitle">
+            Tournaments · Pickup · Community
+        </p>
+
+        <div class="coming-soon">
+            📸 Tournament photos coming soon.
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+
     <section id="about">
 
-        <h2>About Volleyholics</h2>
+        <h2 class="section-title">
+            About Volleyholics
+        </h2>
 
-        <p class="section-text">
-            Volleyholics is a volleyball community built around
-            competition, fun, and bringing players together.
-            We organize volleyball tournaments and events
-            throughout the DMV.
+        <p>
+            Volleyholics is a DMV volleyball community built for
+            people who love to play, compete, and meet other players.
+            We organize tournaments, pickup games, and volleyball
+            events while building a fun and competitive community.
         </p>
 
     </section>
 
 
+    <!-- CONTACT -->
+
+    <section id="contact">
+
+        <h2 class="section-title">
+            Contact Volleyholics
+        </h2>
+
+        <p>
+            Questions about tournaments, registration, or joining the community?
+        </p>
+
+        <p>
+            More contact and social information coming soon.
+        </p>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
     <footer>
-        © 2026 Volleyholics
+        © 2026 Volleyholics · DMV Volleyball
     </footer>
 
 </body>
