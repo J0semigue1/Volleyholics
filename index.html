@@ -351,7 +351,55 @@
         .lightbox-close:hover {
             color: #39ff14;
         }
-
+        
+        
+        /* LIGHTBOX ARROWS */
+        
+        .lightbox-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid #39ff14;
+            color: white;
+            font-size: 38px;
+            width: 60px;
+            height: 70px;
+            border-radius: 8px;
+            cursor: pointer;
+            z-index: 10000;
+            transition: 0.2s;
+        }
+        
+        .lightbox-arrow:hover {
+            background: #39ff14;
+            color: black;
+            box-shadow: 0 0 20px rgba(57, 255, 20, 0.5);
+        }
+        
+        .lightbox-prev {
+            left: 25px;
+        }
+        
+        .lightbox-next {
+            right: 25px;
+        }
+        
+        @media (max-width: 600px) {
+            .lightbox-arrow {
+                width: 45px;
+                height: 55px;
+                font-size: 28px;
+            }
+        
+            .lightbox-prev {
+                left: 8px;
+            }
+        
+            .lightbox-next {
+                right: 8px;
+            }
+        }
         /* CONTACT */
 
         #contact {
@@ -714,13 +762,23 @@
     </section>
  
     <!-- FOOTER -->
-   <div id="lightbox" class="lightbox">
+    <div id="lightbox" class="lightbox">
     
         <span class="lightbox-close">&times;</span>
+    
+        <button class="lightbox-arrow lightbox-prev"
+                aria-label="Previous photo">
+            &#10094;
+        </button>
     
         <img id="lightbox-image"
              src=""
              alt="Volleyholics photo">
+    
+        <button class="lightbox-arrow lightbox-next"
+                aria-label="Next photo">
+            &#10095;
+        </button>
     
     </div>
     <footer>
@@ -739,16 +797,61 @@
     const closeButton =
         document.querySelector('.lightbox-close');
 
+    const previousButton =
+        document.querySelector('.lightbox-prev');
 
-    galleryImages.forEach(image => {
+    const nextButton =
+        document.querySelector('.lightbox-next');
+
+    let currentImage = 0;
+
+
+    function showImage(index) {
+
+        if (index < 0) {
+            index = galleryImages.length - 1;
+        }
+
+        if (index >= galleryImages.length) {
+            index = 0;
+        }
+
+        currentImage = index;
+
+        lightboxImage.src =
+            galleryImages[currentImage].src;
+    }
+
+
+    galleryImages.forEach((image, index) => {
 
         image.addEventListener('click', () => {
 
-            lightboxImage.src = image.src;
+            currentImage = index;
+
+            showImage(currentImage);
 
             lightbox.classList.add('active');
 
         });
+
+    });
+
+
+    previousButton.addEventListener('click', (event) => {
+
+        event.stopPropagation();
+
+        showImage(currentImage - 1);
+
+    });
+
+
+    nextButton.addEventListener('click', (event) => {
+
+        event.stopPropagation();
+
+        showImage(currentImage + 1);
 
     });
 
@@ -773,10 +876,20 @@
 
     document.addEventListener('keydown', (event) => {
 
+        if (!lightbox.classList.contains('active')) {
+            return;
+        }
+
         if (event.key === 'Escape') {
-
             lightbox.classList.remove('active');
+        }
 
+        if (event.key === 'ArrowLeft') {
+            showImage(currentImage - 1);
+        }
+
+        if (event.key === 'ArrowRight') {
+            showImage(currentImage + 1);
         }
 
     });
