@@ -303,11 +303,12 @@
         
         @media (max-width: 500px) {
             .photo-gallery {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 6px;
             }
         
             .photo-gallery img {
-                height: 280px;
+                height: 180px;
             }
         }
         /* PHOTO LIGHTBOX */
