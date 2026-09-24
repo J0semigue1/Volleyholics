@@ -268,17 +268,42 @@
         }
 /* REGISTRATION */
 
-        #registration {
-            padding: 80px 6%;
-            background:
-                radial-gradient(
-                    circle at center,
-                    rgba(57,255,20,.06),
-                    transparent 55%
-                ),
-                #050505;
+            #registration {
+                display: none;
+                position: fixed;
+                inset: 0;
+                z-index: 3000;
+            
+                padding: 80px 20px 40px;
+            
+                background: rgba(0, 0, 0, .88);
+                backdrop-filter: blur(8px);
+            
+                overflow-y: auto;
+            }
+            
+            #registration.active {
+                display: block;
+            }
+        .registration-close {
+            position: fixed;
+            top: 25px;
+            right: 35px;
+        
+            border: none;
+            background: transparent;
+        
+            color: #39ff14;
+            font-size: 42px;
+            font-weight: 300;
+        
+            cursor: pointer;
+            z-index: 3001;
         }
         
+        .registration-close:hover {
+            color: white;
+        }
         .registration-form {
             max-width: 850px;
             margin: 0 auto;
@@ -744,12 +769,13 @@
 
                 <div>
 
-                    <a
-                        href="#registration"
-                        class="register-button"
-                    >
-                        REGISTER →
-                    </a>
+                <a
+                    href="#"
+                    class="register-button"
+                    id="open-registration"
+                >
+                    REGISTER →
+                </a>
 
                 </div>
 
@@ -782,7 +808,13 @@
 <!-- REGISTRATION -->
 
 <section id="registration">
-
+    <button
+        type="button"
+        class="registration-close"
+        aria-label="Close registration"
+    >
+        &times;
+    </button>
     <h2 class="section-title">
         Tournament Registration
     </h2>
@@ -1159,6 +1191,65 @@
             showImage(currentImage + 1);
         }
 
+    });
+    /* REGISTRATION POPUP */
+    
+    const registrationPopup =
+        document.getElementById('registration');
+    
+    const openRegistrationButton =
+        document.getElementById('open-registration');
+    
+    const closeRegistrationButton =
+        document.querySelector('.registration-close');
+    
+    
+    openRegistrationButton.addEventListener('click', (event) => {
+    
+        event.preventDefault();
+    
+        registrationPopup.classList.add('active');
+    
+        document.body.style.overflow = 'hidden';
+    
+    });
+    
+    
+    closeRegistrationButton.addEventListener('click', () => {
+    
+        registrationPopup.classList.remove('active');
+    
+        document.body.style.overflow = '';
+    
+    });
+    
+    
+    registrationPopup.addEventListener('click', (event) => {
+    
+        if (event.target === registrationPopup) {
+    
+            registrationPopup.classList.remove('active');
+    
+            document.body.style.overflow = '';
+    
+        }
+    
+    });
+    
+    
+    document.addEventListener('keydown', (event) => {
+    
+        if (
+            event.key === 'Escape' &&
+            registrationPopup.classList.contains('active')
+        ) {
+    
+            registrationPopup.classList.remove('active');
+    
+            document.body.style.overflow = '';
+    
+        }
+    
     });
 </script>
 </body>
