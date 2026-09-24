@@ -20,7 +20,6 @@
         }
 
         /* NAVIGATION */
-
         nav {
             width: 100%;
             padding: 22px 6%;
@@ -83,7 +82,26 @@
                 drop-shadow(0 0 20px rgba(0,255,200,.20))
                 drop-shadow(0 0 30px rgba(57,255,20,.15));
         }
-
+        .hero-bottom {
+            width: 92%;
+            max-width: 1400px;
+            margin: 15px auto 0;
+        
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+        }
+        
+        .hero-bottom .tagline {
+            margin: 0;
+            text-align: left;
+        }
+        
+        .hero-bottom .hero-button {
+            margin: 0;
+            flex-shrink: 0;
+        }
         .tagline {
             margin-top: 15px;
             font-size: clamp(14px, 2vw, 20px);
@@ -277,7 +295,7 @@
         
         .wallyball-banner-link {
             display: block;
-            max-width: 1500px;
+            max-width: 1100px;
             margin: 0 auto;
         
             border-radius: 18px;
@@ -504,6 +522,17 @@
             .form-row {
                 grid-template-columns: 1fr;
                 gap: 0;
+            }
+        
+        
+            .hero-bottom {
+                width: 90%;
+                flex-direction: column;
+                gap: 18px;
+            }
+        
+            .hero-bottom .tagline {
+                text-align: center;
             }
         
         }
@@ -771,13 +800,17 @@
             class="hero-logo"
         >
 
-        <p class="tagline">
-            DMV Volleyball · Competition · Community
-        </p>
-
-        <a href="#events" class="hero-button">
-            NEXT TOURNAMENT ↓
-        </a>
+        <div class="hero-bottom">
+        
+            <p class="tagline">
+                DMV Volleyball · Competition · Community
+            </p>
+        
+            <a href="#events" class="hero-button">
+                NEXT TOURNAMENT ↓
+            </a>
+        
+        </div>
 
     </header>
 
