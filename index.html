@@ -266,6 +266,42 @@
             font-size: 18px;
             line-height: 1.8;
         }
+        /* WALLYBALL FEATURE */
+
+        .wallyball-feature {
+            padding: 35px 4% 70px;
+            background: #050505;
+        }
+        
+        .wallyball-banner-link {
+            display: block;
+            max-width: 1500px;
+            margin: 0 auto;
+        
+            border-radius: 18px;
+            overflow: hidden;
+        
+            box-shadow:
+                0 0 25px rgba(57,255,20,.10);
+        
+            transition:
+                transform .3s ease,
+                box-shadow .3s ease;
+        }
+        
+        .wallyball-banner {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        
+        .wallyball-banner-link:hover {
+            transform: scale(1.015);
+        
+            box-shadow:
+                0 0 20px rgba(57,255,20,.25),
+                0 0 50px rgba(57,255,20,.12);
+        }
 /* REGISTRATION */
 
             #registration {
@@ -863,7 +899,23 @@
         </div>
 
     </section>
+<!-- WALLYBALL FEATURE -->
 
+    <section class="wallyball-feature">
+    
+        <a
+            href="wallyball.html"
+            class="wallyball-banner-link"
+            aria-label="Explore Wallyball"
+        >
+            <img
+                src="wallyball_banner.png"
+                alt="Explore Wallyball with Volleyholics"
+                class="wallyball-banner"
+            >
+        </a>
+    
+    </section>
 <!-- REGISTRATION -->
 
 <section id="registration">
