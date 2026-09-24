@@ -266,7 +266,126 @@
             font-size: 18px;
             line-height: 1.8;
         }
+/* REGISTRATION */
 
+        #registration {
+            padding: 80px 6%;
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(57,255,20,.06),
+                    transparent 55%
+                ),
+                #050505;
+        }
+        
+        .registration-form {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 35px;
+            border: 1px solid #39ff14;
+            border-radius: 16px;
+            background: linear-gradient(
+                135deg,
+                #101718,
+                #090b0c
+            );
+            box-shadow: 0 0 35px rgba(57,255,20,.08);
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 22px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        .optional {
+            color: #888;
+            font-weight: normal;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 15px;
+            border: 1px solid #333;
+            border-radius: 7px;
+            outline: none;
+            background: #080b0a;
+            color: white;
+            font-family: inherit;
+            font-size: 15px;
+            transition: .2s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #39ff14;
+            box-shadow: 0 0 12px rgba(57,255,20,.15);
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+        }
+        
+        .registration-confirmation {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin: 5px 0 28px;
+            color: #aaa;
+            font-size: 13px;
+            line-height: 1.5;
+            cursor: pointer;
+        }
+        
+        .registration-confirmation input {
+            margin-top: 3px;
+            accent-color: #39ff14;
+        }
+        
+        .registration-submit {
+            width: 100%;
+            padding: 16px 25px;
+            border: none;
+            border-radius: 7px;
+            background: #39ff14;
+            color: #050505;
+            font-size: 17px;
+            font-weight: 900;
+            cursor: pointer;
+            transition: .2s;
+        }
+        
+        .registration-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 25px rgba(57,255,20,.5);
+        }
+        
+        @media (max-width: 650px) {
+        
+            .registration-form {
+                padding: 25px 18px;
+            }
+        
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+        
+        }
         /* PHOTOS */
 
 /* PHOTO GALLERY */
@@ -661,7 +780,155 @@
 
     </section>
 
+<!-- REGISTRATION -->
 
+<section id="registration">
+
+    <h2 class="section-title">
+        Tournament Registration
+    </h2>
+
+    <p class="section-subtitle">
+        Ready to compete? Register your team for the next Volleyholics tournament.
+    </p>
+
+    <form
+        action="https://formspree.io/f/mrpblzpl"
+        method="POST"
+        class="registration-form"
+    >
+
+        <div class="form-row">
+
+            <div class="form-group">
+                <label for="team-name">Team Name</label>
+                <input
+                    type="text"
+                    id="team-name"
+                    name="Team Name"
+                    placeholder="Your team name"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="captain-name">Captain Name</label>
+                <input
+                    type="text"
+                    id="captain-name"
+                    name="Captain Name"
+                    placeholder="First and last name"
+                    required
+                >
+            </div>
+
+        </div>
+
+
+        <div class="form-row">
+
+            <div class="form-group">
+                <label for="captain-email">Captain Email</label>
+                <input
+                    type="email"
+                    id="captain-email"
+                    name="email"
+                    placeholder="name@email.com"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="captain-phone">Captain Phone</label>
+                <input
+                    type="tel"
+                    id="captain-phone"
+                    name="Captain Phone"
+                    placeholder="(555) 555-5555"
+                    required
+                >
+            </div>
+
+        </div>
+
+
+        <div class="form-row">
+
+            <div class="form-group">
+                <label for="player-2">Player 2</label>
+                <input
+                    type="text"
+                    id="player-2"
+                    name="Player 2"
+                    placeholder="First and last name"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="player-3">Player 3</label>
+                <input
+                    type="text"
+                    id="player-3"
+                    name="Player 3"
+                    placeholder="First and last name"
+                    required
+                >
+            </div>
+
+        </div>
+
+
+        <div class="form-group">
+            <label for="player-4">
+                Player 4 <span class="optional">(optional)</span>
+            </label>
+
+            <input
+                type="text"
+                id="player-4"
+                name="Player 4"
+                placeholder="First and last name"
+            >
+        </div>
+
+
+        <div class="form-group">
+            <label for="notes">Comments / Notes</label>
+
+            <textarea
+                id="notes"
+                name="Comments"
+                rows="4"
+                placeholder="Anything you'd like us to know?"
+            ></textarea>
+        </div>
+
+
+        <label class="registration-confirmation">
+
+            <input
+                type="checkbox"
+                name="Registration Acknowledgement"
+                value="Confirmed"
+                required
+            >
+
+            <span>
+                I understand that submitting this form does not guarantee
+                registration until any required tournament payment is completed.
+            </span>
+
+        </label>
+
+
+        <button type="submit" class="registration-submit">
+            REGISTER TEAM →
+        </button>
+
+    </form>
+
+</section>
     <!-- PHOTOS -->
 
     <section id="photos">
