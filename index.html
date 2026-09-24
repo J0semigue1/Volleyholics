@@ -398,7 +398,65 @@
             transform: translateY(-2px);
             box-shadow: 0 0 25px rgba(57,255,20,.5);
         }
+        .registration-success {
+            display: none;
+            max-width: 650px;
+            margin: 40px auto;
+            padding: 45px 30px;
         
+            text-align: center;
+        
+            border: 1px solid #39ff14;
+            border-radius: 16px;
+        
+            background: linear-gradient(
+                135deg,
+                #101718,
+                #090b0c
+            );
+        
+            box-shadow: 0 0 35px rgba(57,255,20,.15);
+        }
+        
+        .registration-success.active {
+            display: block;
+        }
+        
+        .success-icon {
+            width: 70px;
+            height: 70px;
+        
+            margin: 0 auto 20px;
+        
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        
+            border: 3px solid #39ff14;
+            border-radius: 50%;
+        
+            color: #39ff14;
+            font-size: 38px;
+            font-weight: bold;
+        
+            box-shadow: 0 0 25px rgba(57,255,20,.25);
+        }
+        
+        .registration-success h2 {
+            color: #39ff14;
+            margin-bottom: 15px;
+        }
+        
+        .registration-success p {
+            color: #ccc;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+        
+        .registration-success h3 {
+            color: white;
+            margin: 25px 0;
+        }
         @media (max-width: 650px) {
         
             .registration-form {
@@ -823,11 +881,12 @@
         Ready to compete? Register your team for the next Volleyholics tournament.
     </p>
 
-    <form
-        action="https://formspree.io/f/mrpblzpl"
-        method="POST"
-        class="registration-form"
-    >
+        <form
+            action="https://formspree.io/f/mrpblzpl"
+            method="POST"
+            class="registration-form"
+            id="registration-form"
+        >
 
         <div class="form-row">
 
@@ -980,7 +1039,36 @@
         </button>
 
     </form>
-
+        <div id="registration-success" class="registration-success">
+        
+            <div class="success-icon">
+                ✓
+            </div>
+        
+            <h2>REGISTRATION RECEIVED!</h2>
+        
+            <p>
+                Thanks for registering with Volleyholics!
+            </p>
+        
+            <p>
+                We received your team information and will contact you
+                with additional tournament details.
+            </p>
+        
+            <h3>
+                SEE YOU ON THE COURT! 👽🏐
+            </h3>
+        
+            <button
+                type="button"
+                id="success-close"
+                class="registration-submit"
+            >
+                CLOSE
+            </button>
+        
+        </div>
 </section>
     <!-- PHOTOS -->
 
@@ -1273,6 +1361,85 @@
         }
     
     });
+    /* REGISTRATION FORM SUBMISSION */
+
+        const registrationForm =
+            document.getElementById('registration-form');
+        
+        const registrationSuccess =
+            document.getElementById('registration-success');
+        
+        const successCloseButton =
+            document.getElementById('success-close');
+        
+        const submitButton =
+            registrationForm.querySelector('.registration-submit');
+        
+        
+        registrationForm.addEventListener('submit', async (event) => {
+        
+            event.preventDefault();
+        
+            const originalButtonText = submitButton.textContent;
+        
+            submitButton.textContent = 'SENDING...';
+            submitButton.disabled = true;
+        
+            const formData = new FormData(registrationForm);
+        
+            try {
+        
+                const response = await fetch(registrationForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+        
+                if (response.ok) {
+        
+                    registrationForm.style.display = 'none';
+        
+                    registrationSuccess.classList.add('active');
+        
+                    registrationForm.reset();
+        
+                } else {
+        
+                    alert(
+                        'Something went wrong with your registration. Please try again.'
+                    );
+        
+                }
+        
+            } catch (error) {
+        
+                alert(
+                    'Unable to send your registration. Please check your connection and try again.'
+                );
+        
+            } finally {
+        
+                submitButton.textContent = originalButtonText;
+                submitButton.disabled = false;
+        
+            }
+        
+        });
+        
+        
+        successCloseButton.addEventListener('click', () => {
+        
+            registrationPopup.classList.remove('active');
+        
+            registrationSuccess.classList.remove('active');
+        
+            registrationForm.style.display = '';
+        
+            document.body.style.overflow = '';
+        
+        });
 </script>
 </body>
 </html>
