@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Photo Gallery | Volleyholics</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #050505;
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+
+        /* NAVIGATION */
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 20px 6%;
+
+            background: rgba(5, 5, 5, .92);
+            backdrop-filter: blur(10px);
+
+            border-bottom: 1px solid rgba(57,255,20,.15);
+        }
+
+        .brand {
+            color: #39ff14;
+            text-decoration: none;
+            font-size: 22px;
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+        }
+
+        .nav-links a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .nav-links a:hover {
+            color: #39ff14;
+        }
+
+
+        /* GALLERY HEADER */
+
+        .gallery-header {
+            padding: 140px 20px 55px;
+            text-align: center;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(57,255,20,.10),
+                    transparent 55%
+                ),
+                #050505;
+        }
+
+        .gallery-header h1 {
+            color: #39ff14;
+
+            font-size: clamp(42px, 7vw, 80px);
+            font-weight: 900;
+            letter-spacing: 4px;
+        }
+
+        .gallery-header p {
+            margin-top: 15px;
+
+            color: #aaa;
+            font-size: 17px;
+            letter-spacing: 1px;
+        }
+
+
+        /* PHOTO GALLERY */
+
+        .gallery-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 4% 80px;
+        }
+
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+        }
+
+        .photo-gallery img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+            transition:
+                transform .2s ease,
+                opacity .2s ease;
+        }
+
+        .photo-gallery img:hover {
+            transform: scale(1.025);
+            opacity: .88;
+        }
+
+
+        /* BACK BUTTON */
+
+        .back-container {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .back-button {
+            display: inline-block;
+
+            padding: 14px 28px;
+
+            color: #39ff14;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 900;
+            letter-spacing: 2px;
+
+            border: 1px solid #39ff14;
+            border-radius: 7px;
+
+            transition: .2s;
+        }
+
+        .back-button:hover {
+            background: #39ff14;
+            color: black;
+        }
+
+
+        /* LIGHTBOX */
+
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            z-index: 5000;
+
+            display: none;
+            align-items: center;
+            justify-content: center;
+
+            padding: 40px;
+
+            background: rgba(0,0,0,.94);
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 88vh;
+
+            object-fit: contain;
+
+            border-radius: 8px;
+
+            box-shadow:
+                0 0 40px rgba(57,255,20,.12);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 25px;
+            right: 35px;
+
+            border: none;
+            background: transparent;
+
+            color: #39ff14;
+            font-size: 45px;
+
+            cursor: pointer;
+        }
+
+        .lightbox-prev,
+        .lightbox-next {
+            position: absolute;
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            border: none;
+            background: rgba(0,0,0,.45);
+
+            color: white;
+            font-size: 50px;
+
+            padding: 15px;
+
+            cursor: pointer;
+        }
+
+        .lightbox-prev {
+            left: 25px;
+        }
+
+        .lightbox-next {
+            right: 25px;
+        }
+
+        .lightbox-prev:hover,
+        .lightbox-next:hover,
+        .lightbox-close:hover {
+            color: #39ff14;
+        }
+
+
+        /* FOOTER */
+
+        footer {
+            padding: 35px 20px;
+
+            text-align: center;
+
+            border-top: 1px solid #1c1c1c;
+
+            color: #777;
+            font-size: 13px;
+        }
+
+
+        /* TABLET */
+
+        @media (max-width: 900px) {
+
+            .photo-gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+
+        /* MOBILE */
+
+        @media (max-width: 650px) {
+
+            nav {
+                padding: 18px 5%;
+            }
+
+            .brand {
+                font-size: 17px;
+            }
+
+            .nav-links {
+                gap: 14px;
+            }
+
+            .nav-links a {
+                font-size: 12px;
+            }
+
+            .gallery-header {
+                padding-top: 120px;
+            }
+
+            .photo-gallery {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+            }
+
+            .lightbox {
+                padding: 15px;
+            }
+
+            .lightbox img {
+                max-width: 95%;
+            }
+
+            .lightbox-prev,
+            .lightbox-next {
+                font-size: 35px;
+                padding: 8px;
+            }
+
+            .lightbox-prev {
+                left: 5px;
+            }
+
+            .lightbox-next {
+                right: 5px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- NAVIGATION -->
+
+    <nav>
+
+        <a href="index.html" class="brand">
+            VOLLEYHOLICS
+        </a>
+
+        <div class="nav-links">
+
+            <a href="index.html">
+                HOME
+            </a>
+
+            <a href="wallyball.html">
+                WALLYBALL
+            </a>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- HEADER -->
+
+    <section class="gallery-header">
+
+        <h1>
+            PHOTO GALLERY
+        </h1>
+
+        <p>
+            Games · Tournaments · Community
+        </p>
+
+    </section>
+
+
+
+    <!-- PHOTOS -->
+
+    <main class="gallery-container">
+
+        <div class="photo-gallery">
+
+            <img src="Volleyholics1.PNG" alt="Volleyholics community photo 1">
+            <img src="Volleyholics2.PNG" alt="Volleyholics community photo 2">
+            <img src="Volleyholics3.jpg" alt="Volleyholics community photo 3">
+            <img src="Volleyholics4.jpg" alt="Volleyholics community photo 4">
+
+            <img src="Volleyholics5.JPG" alt="Volleyholics community photo 5">
+            <img src="Volleyholics6.JPG" alt="Volleyholics community photo 6">
+            <img src="Volleyholics7.JPG" alt="Volleyholics community photo 7">
+            <img src="Volleyholics8.JPG" alt="Volleyholics community photo 8">
+
+            <img src="Volleyholics9.JPG" alt="Volleyholics community photo 9">
+            <img src="Volleyholics10.JPG" alt="Volleyholics community photo 10">
+            <img src="Volleyholics11.JPG" alt="Volleyholics community photo 11">
+
+        </div>
+
+
+        <div class="back-container">
+
+            <a href="index.html" class="back-button">
+                ← BACK TO VOLLEYHOLICS
+            </a>
+
+        </div>
+
+    </main>
+
+
+
+    <!-- LIGHTBOX -->
+
+    <div class="lightbox" id="lightbox">
+
+        <button
+            class="lightbox-close"
+            aria-label="Close photo"
+        >
+            &times;
+        </button>
+
+        <button
+            class="lightbox-prev"
+            aria-label="Previous photo"
+        >
+            &#10094;
+        </button>
+
+        <img
+            id="lightbox-image"
+            src=""
+            alt="Volleyholics enlarged photo"
+        >
+
+        <button
+            class="lightbox-next"
+            aria-label="Next photo"
+        >
+            &#10095;
+        </button>
+
+    </div>
+
+
+
+    <!-- FOOTER -->
+
+    <footer>
+        © 2026 Volleyholics · DMV Volleyball Community
+    </footer>
+
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        const galleryImages =
+            document.querySelectorAll('.photo-gallery img');
+
+        const lightbox =
+            document.getElementById('lightbox');
+
+        const lightboxImage =
+            document.getElementById('lightbox-image');
+
+        const closeButton =
+            document.querySelector('.lightbox-close');
+
+        const previousButton =
+            document.querySelector('.lightbox-prev');
+
+        const nextButton =
+            document.querySelector('.lightbox-next');
+
+        let currentImage = 0;
+
+
+        function showImage(index) {
+
+            if (index < 0) {
+                index = galleryImages.length - 1;
+            }
+
+            if (index >= galleryImages.length) {
+                index = 0;
+            }
+
+            currentImage = index;
+
+            lightboxImage.src =
+                galleryImages[currentImage].src;
+        }
+
+
+        galleryImages.forEach((image, index) => {
+
+            image.addEventListener('click', () => {
+
+                currentImage = index;
+
+                showImage(currentImage);
+
+                lightbox.classList.add('active');
+
+                document.body.style.overflow = 'hidden';
+
+            });
+
+        });
+
+
+        previousButton.addEventListener('click', (event) => {
+
+            event.stopPropagation();
+
+            showImage(currentImage - 1);
+
+        });
+
+
+        nextButton.addEventListener('click', (event) => {
+
+            event.stopPropagation();
+
+            showImage(currentImage + 1);
+
+        });
+
+
+        closeButton.addEventListener('click', () => {
+
+            lightbox.classList.remove('active');
+
+            document.body.style.overflow = '';
+
+        });
+
+
+        lightbox.addEventListener('click', (event) => {
+
+            if (event.target === lightbox) {
+
+                lightbox.classList.remove('active');
+
+                document.body.style.overflow = '';
+
+            }
+
+        });
+
+
+        document.addEventListener('keydown', (event) => {
+
+            if (!lightbox.classList.contains('active')) {
+                return;
+            }
+
+            if (event.key === 'Escape') {
+
+                lightbox.classList.remove('active');
+
+                document.body.style.overflow = '';
+
+            }
+
+            if (event.key === 'ArrowLeft') {
+                showImage(currentImage - 1);
+            }
+
+            if (event.key === 'ArrowRight') {
+                showImage(currentImage + 1);
+            }
+
+        });
+
+    </script>
+
+
+</body>
+
+</html>
