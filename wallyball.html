@@ -344,31 +344,51 @@
         /* MOBILE */
 
         @media (max-width: 700px) {
-
+        
             nav {
-                padding: 18px 5%;
+                padding: 14px 5%;
+                flex-wrap: wrap;
+                row-gap: 12px;
             }
-
+        
             .brand {
                 font-size: 17px;
             }
-
+        
+            .nav-right {
+                margin-left: auto;
+                gap: 16px;
+            }
+        
             .nav-links {
-                gap: 14px;
+                display: flex;
+                align-items: center;
+                gap: 16px;
             }
-
+        
             .nav-links a {
-                font-size: 12px;
+                font-size: 11px;
             }
-
+        
+            .nav-social {
+                gap: 10px;
+                padding-left: 14px;
+            }
+        
+            .nav-social a {
+                width: 21px;
+                height: 21px;
+            }
+        
+            .nav-social svg {
+                width: 19px;
+                height: 19px;
+            }
+        
             .features {
                 grid-template-columns: 1fr;
             }
-
-            .wallyball-hero {
-                min-height: 65vh;
-            }
-
+        
         }
 
     </style>
