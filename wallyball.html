@@ -2106,6 +2106,34 @@
         }
 
     });
+            // WALLYBALL REGISTRATION POPUP
+        
+        const wallyballRegisterButton =
+            document.getElementById('open-wallyball-registration');
+        
+        const registrationPopup =
+            document.getElementById('registration');
+        
+        const registrationClose =
+            document.querySelector('.registration-close');
+        
+        
+        wallyballRegisterButton.addEventListener('click', function () {
+        
+            registrationPopup.classList.add('active');
+        
+            document.body.style.overflow = 'hidden';
+        
+        });
+        
+        
+        registrationClose.addEventListener('click', function () {
+        
+            registrationPopup.classList.remove('active');
+        
+            document.body.style.overflow = '';
+        
+        });
 </script>
 
 </body>
