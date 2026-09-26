@@ -2229,7 +2229,111 @@
 
     }
 
+// =========================
+// REGISTRATION SUBMISSION
+// =========================
 
+const registrationForm =
+    document.getElementById('registration-form');
+
+const registrationSuccess =
+    document.getElementById('registration-success');
+
+const successClose =
+    document.getElementById('success-close');
+
+
+if (registrationForm) {
+
+    registrationForm.addEventListener('submit', async function(event) {
+
+        event.preventDefault();
+
+        const submitButton =
+            registrationForm.querySelector('.registration-submit');
+
+        const originalButtonText =
+            submitButton.textContent;
+
+        submitButton.textContent = 'SENDING...';
+        submitButton.disabled = true;
+
+        const formData =
+            new FormData(registrationForm);
+
+
+        try {
+
+            const response =
+                await fetch(registrationForm.action, {
+
+                    method: 'POST',
+
+                    body: formData,
+
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+
+                });
+
+
+            if (response.ok) {
+
+                registrationForm.style.display = 'none';
+
+                registrationSuccess.classList.add('active');
+
+                registrationForm.reset();
+
+                // Reset Player 4
+                if (player4Group && player4Input) {
+
+                    player4Group.style.display = 'none';
+                    player4Input.required = false;
+                    player4Input.value = '';
+
+                }
+
+            } else {
+
+                alert(
+                    'Something went wrong with your registration. Please try again.'
+                );
+
+            }
+
+        } catch (error) {
+
+            alert(
+                'Unable to send your registration. Please check your connection and try again.'
+            );
+
+        } finally {
+
+            submitButton.textContent =
+                originalButtonText;
+
+            submitButton.disabled = false;
+
+        }
+
+    });
+
+}
+    if (successClose) {
+
+    successClose.addEventListener('click', function() {
+
+        registrationSuccess.classList.remove('active');
+
+        registrationForm.style.display = '';
+
+        closeRegistration();
+
+    });
+
+}
     // =========================
     // ESCAPE KEY
     // =========================
