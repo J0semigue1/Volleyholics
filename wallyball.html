@@ -321,7 +321,208 @@
             line-height: 1.6;
         }
 
-
+        /* WALLYBALL RULES */
+        
+        .rules-button-container {
+            margin-top: 45px;
+            text-align: center;
+        }
+        
+        .rules-button {
+            padding: 15px 28px;
+        
+            border: 1px solid #39ff14;
+            border-radius: 7px;
+        
+            background: transparent;
+            color: #39ff14;
+        
+            font-weight: 900;
+            letter-spacing: 2px;
+        
+            cursor: pointer;
+        
+            transition: .2s;
+        }
+        
+        .rules-button:hover {
+            background: #39ff14;
+            color: #050505;
+            transform: translateY(-2px);
+        }
+        
+        
+        /* POPUP BACKGROUND */
+        
+        .rules-popup {
+            display: none;
+        
+            position: fixed;
+            inset: 0;
+            z-index: 5000;
+        
+            padding: 40px 20px;
+        
+            background: rgba(0,0,0,.90);
+            backdrop-filter: blur(8px);
+        
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .rules-popup.active {
+            display: flex;
+        }
+        
+        
+        /* POPUP WINDOW */
+        
+        .rules-modal {
+            width: 100%;
+            max-width: 850px;
+            max-height: 85vh;
+        
+            display: flex;
+            flex-direction: column;
+        
+            background: #090c0d;
+        
+            border: 1px solid rgba(57,255,20,.35);
+            border-radius: 16px;
+        
+            overflow: hidden;
+        
+            box-shadow:
+                0 0 30px rgba(57,255,20,.12);
+        }
+        
+        
+        /* FIXED POPUP HEADER */
+        
+        .rules-header {
+            flex-shrink: 0;
+        
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        
+            padding: 24px 28px;
+        
+            border-bottom: 1px solid rgba(57,255,20,.20);
+        
+            background: #0c1011;
+        }
+        
+        .rules-label {
+            color: #888;
+        
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: 4px;
+        }
+        
+        .rules-header h2 {
+            margin-top: 4px;
+        
+            color: #39ff14;
+        
+            font-size: 26px;
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+        
+        .rules-close {
+            border: none;
+            background: transparent;
+        
+            color: #39ff14;
+        
+            font-size: 40px;
+            line-height: 1;
+        
+            cursor: pointer;
+        }
+        
+        .rules-close:hover {
+            color: white;
+        }
+        
+        
+        /* SCROLLING RULES */
+        
+        .rules-scroll {
+            overflow-y: auto;
+        
+            padding: 28px;
+        
+            text-align: left;
+        }
+        
+        .rules-intro {
+            margin-bottom: 30px;
+        
+            color: #aaa;
+            line-height: 1.7;
+        }
+        
+        .rules-group {
+            margin-bottom: 35px;
+        }
+        
+        .rules-group h3 {
+            margin-bottom: 15px;
+        
+            color: #39ff14;
+        
+            font-size: 15px;
+            letter-spacing: 2px;
+        }
+        
+        .rules-group ol {
+            padding-left: 28px;
+        }
+        
+        .rules-group li {
+            margin-bottom: 13px;
+            padding-left: 7px;
+        
+            color: #ccc;
+        
+            font-size: 14px;
+            line-height: 1.65;
+        }
+        
+        .rules-group li::marker {
+            color: #39ff14;
+            font-weight: 900;
+        }
+        
+        
+        /* MOBILE */
+        
+        @media (max-width: 700px) {
+        
+            .rules-popup {
+                padding: 20px 12px;
+            }
+        
+            .rules-modal {
+                max-height: 90vh;
+            }
+        
+            .rules-header {
+                padding: 20px;
+            }
+        
+            .rules-header h2 {
+                font-size: 20px;
+            }
+        
+            .rules-scroll {
+                padding: 20px;
+            }
+        
+        }
         /* FOOTER */
 
         footer {
@@ -411,17 +612,19 @@
 
         <div class="nav-links">
 
-            <a href="index.html">
-                HOME
-            </a>
+        <a href="index.html">
+            HOME
+        </a>
 
         <a href="#about-wallyball" class="wallyball-nav">
             WALLYBALL
         </a>
-
-            <a href="#events">
-                EVENTS
-            </a>
+        <a href="#" id="open-rules-nav">
+            RULES
+        </a>
+        <a href="#events">
+            EVENTS
+        </a>
 
         </div>
 
@@ -571,7 +774,18 @@
 
         </div>
 
-    </div>
+            </div>
+               <div class="rules-button-container">
+        
+            <button
+                type="button"
+                class="rules-button"
+                id="open-rules-button"
+            >
+                VIEW WALLYBALL RULES →
+            </button>
+        
+        </div>
 
 </section>
 
@@ -600,7 +814,268 @@
 
     </section>
 
+<!-- WALLYBALL RULES POPUP -->
 
+<div class="rules-popup" id="rules-popup">
+
+    <div class="rules-modal">
+
+        <div class="rules-header">
+
+            <div>
+                <span class="rules-label">VOLLEYHOLICS</span>
+                <h2>WALLYBALL RULES</h2>
+            </div>
+
+            <button
+                type="button"
+                class="rules-close"
+                id="rules-close"
+                aria-label="Close rules"
+            >
+                &times;
+            </button>
+
+        </div>
+
+
+        <div class="rules-scroll">
+
+            <p class="rules-intro">
+                Basic rules used for Volleyholics Wallyball.
+                Tournament-specific formats or modifications will
+                be communicated before each event.
+            </p>
+
+
+            <div class="rules-group">
+
+                <h3>GAME FORMAT</h3>
+
+                <ol>
+                    <li>Service area is three feet from each end of the court.</li>
+
+                    <li>
+                        The match is won when one team wins the best of three games.
+                        A game is won when one team first scores 25 points in the
+                        first two games or 15 points in the tie-breaker game.
+                    </li>
+
+                    <li>Each team can only call one timeout per game.</li>
+
+                    <li>Four players will play per side.</li>
+
+                    <li>
+                        In co-rec competition, two players shall be male and two
+                        players shall be female. A team may play with more females
+                        than males (3-1), but may never play with more than two male
+                        players at a time. Different formats may apply depending on
+                        tournament organization.
+                    </li>
+
+                    <li>
+                        A coin toss will determine first service or choice of court
+                        side. Second-game service goes to the other team. A third
+                        game, if necessary, requires another coin toss.
+                    </li>
+                </ol>
+
+            </div>
+
+
+            <div class="rules-group">
+
+                <h3>WALLS & BOUNDARIES</h3>
+
+                <ol start="7">
+                    <li>
+                        The ball is out of bounds when, while crossing the net, it
+                        hits the ceiling, the back wall of the opponent's side, or
+                        two walls consecutively on a service, volley, or block.
+                    </li>
+
+                    <li>
+                        The ceiling and back wall on your own side are in bounds if
+                        your own player touches the ball first.
+                    </li>
+
+                    <li>
+                        The server may not spike or block the ball during the volley
+                        in which he or she served.
+                    </li>
+
+                    <li>
+                        If the server catches the ball on the service toss, the
+                        server can replay the serve.
+                    </li>
+
+                    <li>
+                        The service must be clean contact with the ball. Pushing the
+                        ball or rolling the ball off the fingers ("paint brush") is
+                        not allowed.
+                    </li>
+
+                    <li>Service order must be kept prior to serving.</li>
+                </ol>
+
+            </div>
+
+
+            <div class="rules-group">
+
+                <h3>NET PLAY & ATTACKING</h3>
+
+                <ol start="13">
+                    <li>
+                        If the ball is only partly across the net and the opponent
+                        hits it, it is good.
+                    </li>
+
+                    <li>
+                        Touching the net is not allowed unless the ball is driven
+                        into the net and the net hits the player.
+                    </li>
+
+                    <li>
+                        On an attack, the player must contact the ball before the
+                        ball has completely crossed over the net.
+                    </li>
+
+                    <li>
+                        Blockers can reach over the net to block, provided the other
+                        team has made its third contact with the ball.
+                    </li>
+
+                    <li>
+                        The opponent cannot block the set. If any part of the ball
+                        has crossed the vertical plane, a free ball is in effect and
+                        both teams are entitled to it.
+                    </li>
+
+                    <li>
+                        If two opposing players touch the net simultaneously, the
+                        point is replayed.
+                    </li>
+
+                    <li>
+                        A ball crossing below the net across the vertical plane can
+                        be played back by your side if the team has not used all
+                        three hits.
+                    </li>
+
+                    <li>
+                        A ball on the vertical plane above the net is open to both
+                        sides.
+                    </li>
+
+                    <li>
+                        A ball passing through the side openings of the net on the
+                        first or second contact is replayed.
+                    </li>
+                </ol>
+
+            </div>
+
+
+            <div class="rules-group">
+
+                <h3>BALL CONTACT & WALL PLAY</h3>
+
+                <ol start="22">
+                    <li>
+                        A double hit is only allowed on a block or on the return of
+                        a hard-driven hit.
+                    </li>
+
+                    <li>
+                        If a ball is touched on a block, the team still has three
+                        hits, and the blocker can make any of these hits.
+                    </li>
+
+                    <li>
+                        Contacting two or more walls is allowed only by the team in
+                        possession of the ball on its own side, provided a player on
+                        that team touches the ball first. The ball must also be
+                        touched by another player before going over on a multiple-wall
+                        hit.
+                    </li>
+
+                    <li>
+                        Holding, pushing, scooping, lifting, or carrying the ball is
+                        not allowed. It must be a clean hit.
+                    </li>
+
+                    <li>
+                        Holding the ball at the top of the net by both sides results
+                        in a replay.
+                    </li>
+
+                    <li>
+                        If two players on the same team hit the ball simultaneously,
+                        it counts as one hit and either player can play the next hit.
+                    </li>
+
+                    <li>
+                        No climbing or using the walls, or players assisting each
+                        other, to gain height at the net.
+                    </li>
+
+                    <li>
+                        A ball can hit the back wall and go over the net directly
+                        when being played by your side. If two walls are touched,
+                        another player must touch it before it goes over the net.
+                    </li>
+
+                    <li>
+                        If a ball spins across to the opponent's side and back to
+                        yours on the first or second hit, you can play your second or
+                        third hit. If it spins back on the third hit, a loss of point
+                        or side out occurs.
+                    </li>
+
+                    <li>
+                        An open-hand dink is illegal. It must be a paint-brush hit,
+                        clean hit, closed fist, knuckle, cobra shot, or soft spike.
+                    </li>
+
+                    <li>The ball cannot contact below the waist.</li>
+
+                    <li>
+                        On a block, if two opposing players touch the ball, the team
+                        still has three hits.
+                    </li>
+                </ol>
+
+            </div>
+
+
+            <div class="rules-group">
+
+                <h3>SUBSTITUTIONS & CO-REC</h3>
+
+                <ol start="34">
+                    <li>
+                        Unlimited substitutions are allowed as long as players are
+                        rotated into the serving position.
+                    </li>
+
+                    <li>
+                        Blocking, spiking, or attacking a serve is illegal.
+                    </li>
+
+                    <li>
+                        For co-rec play, anytime the ball is played three times, a
+                        female player must make at least one of those contacts.
+                    </li>
+                </ol>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
 
     <!-- FOOTER -->
 
@@ -612,7 +1087,85 @@
         </p>
 
     </footer>
+<script>
+    const rulesPopup =
+        document.getElementById('rules-popup');
 
+    const openRulesNav =
+        document.getElementById('open-rules-nav');
+
+    const openRulesButton =
+        document.getElementById('open-rules-button');
+
+    const closeRulesButton =
+        document.getElementById('rules-close');
+
+
+    function openRules() {
+
+        rulesPopup.classList.add('active');
+
+        document.body.style.overflow = 'hidden';
+
+    }
+
+
+    function closeRules() {
+
+        rulesPopup.classList.remove('active');
+
+        document.body.style.overflow = '';
+
+    }
+
+
+    openRulesNav.addEventListener('click', (event) => {
+
+        event.preventDefault();
+
+        openRules();
+
+    });
+
+
+    openRulesButton.addEventListener('click', () => {
+
+        openRules();
+
+    });
+
+
+    closeRulesButton.addEventListener('click', () => {
+
+        closeRules();
+
+    });
+
+
+    rulesPopup.addEventListener('click', (event) => {
+
+        if (event.target === rulesPopup) {
+
+            closeRules();
+
+        }
+
+    });
+
+
+    document.addEventListener('keydown', (event) => {
+
+        if (
+            event.key === 'Escape' &&
+            rulesPopup.classList.contains('active')
+        ) {
+
+            closeRules();
+
+        }
+
+    });
+</script>
 
 </body>
 
