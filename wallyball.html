@@ -2023,6 +2023,11 @@
 
     </footer>
 <script>
+
+    // =========================
+    // WALLYBALL RULES POPUP
+    // =========================
+
     const rulesPopup =
         document.getElementById('rules-popup');
 
@@ -2031,8 +2036,9 @@
 
     const openRulesButton =
         document.getElementById('open-rules-button');
+
     const openEventRules =
-    document.getElementById('open-event-rules');
+        document.getElementById('open-event-rules');
 
     const closeRulesButton =
         document.getElementById('rules-close');
@@ -2040,8 +2046,9 @@
 
     function openRules() {
 
-        rulesPopup.classList.add('active');
+        if (!rulesPopup) return;
 
+        rulesPopup.classList.add('active');
         document.body.style.overflow = 'hidden';
 
     }
@@ -2049,91 +2056,206 @@
 
     function closeRules() {
 
-        rulesPopup.classList.remove('active');
+        if (!rulesPopup) return;
 
+        rulesPopup.classList.remove('active');
         document.body.style.overflow = '';
 
     }
 
 
-    openRulesNav.addEventListener('click', (event) => {
+    if (openRulesNav) {
 
-        event.preventDefault();
+        openRulesNav.addEventListener('click', function(event) {
 
-        openRules();
+            event.preventDefault();
+            openRules();
 
-    });
+        });
 
-
-    openRulesButton.addEventListener('click', () => {
-
-        openRules();
-
-    });
-    openEventRules.addEventListener('click', () => {
-    
-        openRules();
-    
-    });
-
-    closeRulesButton.addEventListener('click', () => {
-
-        closeRules();
-
-    });
+    }
 
 
-    rulesPopup.addEventListener('click', (event) => {
+    if (openRulesButton) {
 
-        if (event.target === rulesPopup) {
+        openRulesButton.addEventListener('click', function() {
+
+            openRules();
+
+        });
+
+    }
+
+
+    if (openEventRules) {
+
+        openEventRules.addEventListener('click', function() {
+
+            openRules();
+
+        });
+
+    }
+
+
+    if (closeRulesButton) {
+
+        closeRulesButton.addEventListener('click', function() {
 
             closeRules();
+
+        });
+
+    }
+
+
+    if (rulesPopup) {
+
+        rulesPopup.addEventListener('click', function(event) {
+
+            if (event.target === rulesPopup) {
+
+                closeRules();
+
+            }
+
+        });
+
+    }
+
+
+    // =========================
+    // REGISTRATION POPUP
+    // =========================
+
+    const wallyballRegisterButton =
+        document.getElementById('open-wallyball-registration');
+
+    const registrationPopup =
+        document.getElementById('registration');
+
+    const registrationClose =
+        document.querySelector('.registration-close');
+
+
+    function openRegistration() {
+
+        if (!registrationPopup) return;
+
+        registrationPopup.classList.add('active');
+        document.body.style.overflow = 'hidden';
+
+    }
+
+
+    function closeRegistration() {
+
+        if (!registrationPopup) return;
+
+        registrationPopup.classList.remove('active');
+        document.body.style.overflow = '';
+
+    }
+
+
+    if (wallyballRegisterButton) {
+
+        wallyballRegisterButton.addEventListener('click', function() {
+
+            openRegistration();
+
+        });
+
+    }
+
+
+    if (registrationClose) {
+
+        registrationClose.addEventListener('click', function() {
+
+            closeRegistration();
+
+        });
+
+    }
+
+
+    // =========================
+    // DIVISION / PLAYER 4
+    // =========================
+
+    const division4v4 =
+        document.getElementById('division-4v4');
+
+    const division3v3 =
+        document.getElementById('division-3v3');
+
+    const player4Group =
+        document.getElementById('player-4-group');
+
+    const player4Input =
+        document.getElementById('player-4');
+
+
+    if (division4v4) {
+
+        division4v4.addEventListener('change', function() {
+
+            if (this.checked && player4Group && player4Input) {
+
+                player4Group.style.display = 'block';
+                player4Input.required = true;
+
+            }
+
+        });
+
+    }
+
+
+    if (division3v3) {
+
+        division3v3.addEventListener('change', function() {
+
+            if (this.checked && player4Group && player4Input) {
+
+                player4Group.style.display = 'none';
+                player4Input.required = false;
+                player4Input.value = '';
+
+            }
+
+        });
+
+    }
+
+
+    // =========================
+    // ESCAPE KEY
+    // =========================
+
+    document.addEventListener('keydown', function(event) {
+
+        if (event.key === 'Escape') {
+
+            if (
+                rulesPopup &&
+                rulesPopup.classList.contains('active')
+            ) {
+                closeRules();
+            }
+
+            if (
+                registrationPopup &&
+                registrationPopup.classList.contains('active')
+            ) {
+                closeRegistration();
+            }
 
         }
 
     });
 
-
-    document.addEventListener('keydown', (event) => {
-
-        if (
-            event.key === 'Escape' &&
-            rulesPopup.classList.contains('active')
-        ) {
-
-            closeRules();
-
-        }
-
-    });
-            // WALLYBALL REGISTRATION POPUP
-        
-        const wallyballRegisterButton =
-            document.getElementById('open-wallyball-registration');
-        
-        const registrationPopup =
-            document.getElementById('registration');
-        
-        const registrationClose =
-            document.querySelector('.registration-close');
-        
-        
-        wallyballRegisterButton.addEventListener('click', function () {
-        
-            registrationPopup.classList.add('active');
-        
-            document.body.style.overflow = 'hidden';
-        
-        });
-        
-        
-        registrationClose.addEventListener('click', function () {
-        
-            registrationPopup.classList.remove('active');
-        
-            document.body.style.overflow = '';
-        
-        });
 </script>
 
 </body>
