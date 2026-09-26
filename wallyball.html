@@ -396,7 +396,270 @@
                 0 0 30px rgba(57,255,20,.12);
         }
         
+        /* REGISTRATION */
+
+            #registration {
+                display: none;
+                position: fixed;
+                inset: 0;
+                z-index: 3000;
+            
+                padding: 80px 20px 40px;
+            
+                background: rgba(0, 0, 0, .88);
+                backdrop-filter: blur(8px);
+            
+                overflow-y: auto;
+            }
+            
+            #registration.active {
+                display: block;
+            }
+        .registration-close {
+            position: fixed;
+            top: 25px;
+            right: 35px;
         
+            border: none;
+            background: transparent;
+        
+            color: #39ff14;
+            font-size: 42px;
+            font-weight: 300;
+        
+            cursor: pointer;
+            z-index: 3001;
+        }
+        
+        .registration-close:hover {
+            color: white;
+        }
+        .registration-form {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 35px;
+            border: 1px solid #39ff14;
+            border-radius: 16px;
+            background: linear-gradient(
+                135deg,
+                #101718,
+                #090b0c
+            );
+            box-shadow: 0 0 35px rgba(57,255,20,.08);
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 22px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        .optional {
+            color: #888;
+            font-weight: normal;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 15px;
+            border: 1px solid #333;
+            border-radius: 7px;
+            outline: none;
+            background: #080b0a;
+            color: white;
+            font-family: inherit;
+            font-size: 15px;
+            transition: .2s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #39ff14;
+            box-shadow: 0 0 12px rgba(57,255,20,.15);
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+        }
+        
+        .registration-confirmation {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin: 5px 0 28px;
+            color: #aaa;
+            font-size: 13px;
+            line-height: 1.5;
+            cursor: pointer;
+        }
+        
+        .registration-confirmation input {
+            margin-top: 3px;
+            accent-color: #39ff14;
+        }
+        
+        .registration-submit {
+            width: 100%;
+            padding: 16px 25px;
+            border: none;
+            border-radius: 7px;
+            background: #39ff14;
+            color: #050505;
+            font-size: 17px;
+            font-weight: 900;
+            cursor: pointer;
+            transition: .2s;
+        }
+        
+        .registration-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 25px rgba(57,255,20,.5);
+        }
+        .registration-success {
+            display: none;
+            max-width: 650px;
+            margin: 40px auto;
+            padding: 45px 30px;
+        
+            text-align: center;
+        
+            border: 1px solid #39ff14;
+            border-radius: 16px;
+        
+            background: linear-gradient(
+                135deg,
+                #101718,
+                #090b0c
+            );
+        
+            box-shadow: 0 0 35px rgba(57,255,20,.15);
+        }
+        
+        .registration-success.active {
+            display: block;
+        }
+        
+        .success-icon {
+            width: 70px;
+            height: 70px;
+        
+            margin: 0 auto 20px;
+        
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        
+            border: 3px solid #39ff14;
+            border-radius: 50%;
+        
+            color: #39ff14;
+            font-size: 38px;
+            font-weight: bold;
+        
+            box-shadow: 0 0 25px rgba(57,255,20,.25);
+        }
+        
+        .registration-success h2 {
+            color: #39ff14;
+            margin-bottom: 15px;
+        }
+        
+        .registration-success p {
+            color: #ccc;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+        
+        .registration-success h3 {
+            color: white;
+            margin: 25px 0;
+        }
+        @media (max-width: 650px) {
+        
+            .registration-form {
+                padding: 25px 18px;
+            }
+        
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+        
+        }
+          /* DIVISION SELECTION */
+
+        .division-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+            margin-top: 10px;
+        }
+        
+        .division-option {
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .division-option input {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .division-option span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        
+            min-height: 65px;
+            padding: 15px;
+        
+            border: 1px solid #333;
+            border-radius: 10px;
+        
+            background: #0b0d0d;
+            color: #ccc;
+        
+            font-size: 14px;
+            font-weight: 900;
+            letter-spacing: 1px;
+        
+            transition: .2s;
+        }
+        
+        .division-option:hover span {
+            border-color: #39ff14;
+        }
+        
+        .division-option input:checked + span {
+            background: rgba(57,255,20,.10);
+            border-color: #39ff14;
+            color: #39ff14;
+        
+            box-shadow:
+                0 0 18px rgba(57,255,20,.12);
+        }
+        
+        @media (max-width: 700px) {
+        
+            .division-options {
+                grid-template-columns: 1fr;
+            }
+        
+        }
         /* FIXED POPUP HEADER */
         
         .rules-header {
@@ -1151,7 +1414,341 @@
     </div>
 
 </section>
-
+        <!-- REGISTRATION -->
+        
+        <section id="registration">
+        
+            <button
+                type="button"
+                class="registration-close"
+                aria-label="Close registration"
+            >
+                &times;
+            </button>
+        
+        
+            <h2 class="section-title">
+                Wallyball Tournament Registration
+            </h2>
+        
+            <p class="section-subtitle">
+                November 14, 2026 · Providence Rec Center
+            </p>
+        
+        
+            <form
+                action="https://formspree.io/f/mrpblzpl"
+                method="POST"
+                class="registration-form"
+                id="registration-form"
+            >
+        
+        
+                <!-- DIVISION -->
+        
+                <div class="form-group">
+        
+                    <label>
+                        Division
+                    </label>
+        
+                    <div class="division-options">
+        
+                        <label class="division-option">
+        
+                            <input
+                                type="radio"
+                                name="Division"
+                                value="4v4 B/BB"
+                                id="division-4v4"
+                                required
+                            >
+        
+                            <span>
+                                🏐 4v4 B/BB
+                            </span>
+        
+                        </label>
+        
+        
+                        <label class="division-option">
+        
+                            <input
+                                type="radio"
+                                name="Division"
+                                value="3v3 Open"
+                                id="division-3v3"
+                                required
+                            >
+        
+                            <span>
+                                🔥 3v3 Open
+                            </span>
+        
+                        </label>
+        
+                    </div>
+        
+                </div>
+        
+        
+                <!-- TEAM + CAPTAIN -->
+        
+                <div class="form-row">
+        
+                    <div class="form-group">
+        
+                        <label for="team-name">
+                            Team Name
+                        </label>
+        
+                        <input
+                            type="text"
+                            id="team-name"
+                            name="Team Name"
+                            placeholder="Your team name"
+                            required
+                        >
+        
+                    </div>
+        
+        
+                    <div class="form-group">
+        
+                        <label for="captain-name">
+                            Captain Name
+                        </label>
+        
+                        <input
+                            type="text"
+                            id="captain-name"
+                            name="Captain Name"
+                            placeholder="First and last name"
+                            required
+                        >
+        
+                    </div>
+        
+                </div>
+        
+        
+                <!-- CONTACT -->
+        
+                <div class="form-row">
+        
+                    <div class="form-group">
+        
+                        <label for="captain-email">
+                            Captain Email
+                        </label>
+        
+                        <input
+                            type="email"
+                            id="captain-email"
+                            name="email"
+                            placeholder="name@email.com"
+                            required
+                        >
+        
+                    </div>
+        
+        
+                    <div class="form-group">
+        
+                        <label for="captain-phone">
+                            Captain Phone
+                        </label>
+        
+                        <input
+                            type="tel"
+                            id="captain-phone"
+                            name="Captain Phone"
+                            placeholder="(555) 555-5555"
+                            required
+                        >
+        
+                    </div>
+        
+                </div>
+        
+        
+                <!-- PLAYERS 2 + 3 -->
+        
+                <div class="form-row">
+        
+                    <div class="form-group">
+        
+                        <label for="player-2">
+                            Player 2
+                        </label>
+        
+                        <input
+                            type="text"
+                            id="player-2"
+                            name="Player 2"
+                            placeholder="First and last name"
+                            required
+                        >
+        
+                    </div>
+        
+        
+                    <div class="form-group">
+        
+                        <label for="player-3">
+                            Player 3
+                        </label>
+        
+                        <input
+                            type="text"
+                            id="player-3"
+                            name="Player 3"
+                            placeholder="First and last name"
+                            required
+                        >
+        
+                    </div>
+        
+                </div>
+        
+        
+                <!-- PLAYER 4 -->
+        
+                <div
+                    class="form-group"
+                    id="player-4-group"
+                    style="display: none;"
+                >
+        
+                    <label for="player-4">
+                        Player 4
+                    </label>
+        
+                    <input
+                        type="text"
+                        id="player-4"
+                        name="Player 4"
+                        placeholder="First and last name"
+                    >
+        
+                </div>
+        
+        
+                <!-- NOTES -->
+        
+                <div class="form-group">
+        
+                    <label for="notes">
+                        Comments / Notes
+                    </label>
+        
+                    <textarea
+                        id="notes"
+                        name="Comments"
+                        rows="4"
+                        placeholder="Anything you'd like us to know?"
+                    ></textarea>
+        
+                </div>
+        
+        
+                <!-- PAYMENT ACKNOWLEDGEMENT -->
+        
+                <label class="registration-confirmation">
+        
+                    <input
+                        type="checkbox"
+                        name="Registration Acknowledgement"
+                        value="Confirmed"
+                        required
+                    >
+        
+                    <span>
+                        I understand that submitting this form does not
+                        guarantee registration until the $60 tournament
+                        payment is completed.
+                    </span>
+        
+                </label>
+        
+        
+                <!-- RISK ACKNOWLEDGEMENT -->
+        
+                <label class="registration-confirmation">
+        
+                    <input
+                        type="checkbox"
+                        name="Team Risk Acknowledgement"
+                        value="Agreed"
+                        required
+                    >
+        
+                    <span>
+                        <strong>Assumption of Risk:</strong>
+                        I understand that participation in Wallyball and
+                        Volleyholics events involves inherent risks,
+                        including falls, collisions, contact with other
+                        players, walls, equipment, and other injuries
+                        associated with athletic activity. I voluntarily
+                        choose to participate and acknowledge these risks.
+                        I also confirm that I will inform my teammates that
+                        participation is voluntary and involves these risks.
+                    </span>
+        
+                </label>
+        
+        
+                <button
+                    type="submit"
+                    class="registration-submit"
+                >
+                    REGISTER TEAM →
+                </button>
+        
+            </form>
+        
+        
+            <!-- SUCCESS MESSAGE -->
+        
+            <div
+                id="registration-success"
+                class="registration-success"
+            >
+        
+                <div class="success-icon">
+                    ✓
+                </div>
+        
+                <h2>
+                    REGISTRATION RECEIVED!
+                </h2>
+        
+                <p>
+                    Thanks for registering for the
+                    Volleyholics Wallyball Tournament!
+                </p>
+        
+                <p>
+                    We received your team information and will contact
+                    you with additional tournament details.
+                </p>
+        
+                <h3>
+                    SEE YOU ON THE COURT! 👽🏐
+                </h3>
+        
+                <button
+                    type="button"
+                    id="success-close"
+                    class="registration-submit"
+                >
+                    CLOSE
+                </button>
+        
+            </div>
+        
+        </section>
+    
 <!-- WALLYBALL RULES POPUP -->
 
 <div class="rules-popup" id="rules-popup">
