@@ -364,6 +364,7 @@
                 0 0 20px rgba(57,255,20,.25),
                 0 0 50px rgba(57,255,20,.12);
         }
+        
 /* REGISTRATION */
 
             #registration {
@@ -885,6 +886,67 @@
                 border-right: none;
                 border-bottom: 1px solid #29402b;
             }
+        }
+        /* DIVISION SELECTION */
+
+        .division-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+            margin-top: 10px;
+        }
+        
+        .division-option {
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .division-option input {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .division-option span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        
+            min-height: 65px;
+            padding: 15px;
+        
+            border: 1px solid #333;
+            border-radius: 10px;
+        
+            background: #0b0d0d;
+            color: #ccc;
+        
+            font-size: 14px;
+            font-weight: 900;
+            letter-spacing: 1px;
+        
+            transition: .2s;
+        }
+        
+        .division-option:hover span {
+            border-color: #39ff14;
+        }
+        
+        .division-option input:checked + span {
+            background: rgba(57,255,20,.10);
+            border-color: #39ff14;
+            color: #39ff14;
+        
+            box-shadow:
+                0 0 18px rgba(57,255,20,.12);
+        }
+        
+        @media (max-width: 700px) {
+        
+            .division-options {
+                grid-template-columns: 1fr;
+            }
+        
         }
 
     </style>
