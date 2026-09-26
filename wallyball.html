@@ -163,64 +163,127 @@
                 0 0 20px rgba(57,255,20,.25),
                 0 0 40px rgba(57,255,20,.12);
         }
-
         /* CONTENT */
-
+        
         .wallyball-content {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 80px 6%;
+            padding: 90px 6%;
+            text-align: center;
         }
-
+        
+        .section-label {
+            margin-bottom: 10px;
+        
+            color: #888 !important;
+            font-size: 12px !important;
+            font-weight: 900;
+            letter-spacing: 5px;
+        }
+        
         .section-title {
             margin-bottom: 20px;
-
+        
             color: #39ff14;
-            font-size: 34px;
+            font-size: clamp(32px, 5vw, 46px);
             font-weight: 900;
+            letter-spacing: 2px;
         }
-
-        .wallyball-content p {
+        
+        .wallyball-description {
+            max-width: 800px;
+            margin: 0 auto 50px;
+        
             color: #bbb;
             font-size: 17px;
             line-height: 1.8;
         }
-
-
+        
+        
         /* FEATURE CARDS */
-
+        
         .features {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 20px;
-
-            margin-top: 50px;
+        
+            margin-top: 45px;
+        
+            text-align: left;
         }
-
+        
         .feature-card {
-            padding: 30px;
-
-            border: 1px solid #222;
-            border-radius: 12px;
-
-            background: #0b0d0d;
-
-            transition: .2s;
+            position: relative;
+        
+            padding: 32px;
+        
+            border: 1px solid rgba(57,255,20,.18);
+            border-radius: 14px;
+        
+            background:
+                linear-gradient(
+                    135deg,
+                    #101718,
+                    #090b0c
+                );
+        
+            transition:
+                transform .25s,
+                border-color .25s,
+                box-shadow .25s;
         }
-
+        
         .feature-card:hover {
+            transform: translateY(-5px);
             border-color: #39ff14;
-            transform: translateY(-4px);
+        
+            box-shadow:
+                0 0 25px rgba(57,255,20,.10);
         }
-
+        
+        .feature-number {
+            margin-bottom: 18px;
+        
+            color: #39ff14;
+            font-size: 13px;
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+        
         .feature-card h3 {
             margin-bottom: 12px;
-            color: #39ff14;
+        
+            color: white;
+            font-size: 20px;
+            font-weight: 900;
+            letter-spacing: 1px;
+        }
+        
+        .wallyball-content .feature-card p {
+            color: #aaa;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+        
+        
+        /* MOBILE */
+        
+        @media (max-width: 700px) {
+        
+            .wallyball-content {
+                padding: 65px 6%;
+            }
+        
+            .features {
+                grid-template-columns: 1fr;
+            }
+        
+            .feature-card {
+                padding: 25px;
+            }
+        
         }
 
-        .feature-card p {
-            font-size: 15px;
-        }
 
 
         /* COMING SOON */
@@ -406,66 +469,91 @@
 
     <!-- WHAT IS WALLYBALL -->
 
-    <section
-        class="wallyball-content"
-        id="about-wallyball"
-    >
+   <section
+    class="wallyball-content"
+    id="about-wallyball"
+>
 
-        <h2 class="section-title">
-            WHAT IS WALLYBALL?
-        </h2>
+    <p class="section-label">
+        THE GAME
+    </p>
 
-        <p>
-            Wallyball takes the fundamentals of volleyball
-            into an indoor racquetball-style court where the
-            walls become part of the game. The smaller court,
-            quick reactions, and unpredictable rebounds create
-            fast and exciting rallies.
-        </p>
+    <h2 class="section-title">
+        WHAT IS WALLYBALL?
+    </h2>
 
-
-        <div class="features">
-
-            <div class="feature-card">
-
-                <h3>THE WALLS</h3>
-
-                <p>
-                    The walls add another dimension to the game,
-                    creating angles and plays you won't normally
-                    see in traditional volleyball.
-                </p>
-
-            </div>
+    <p class="wallyball-description">
+        Wallyball takes volleyball inside an enclosed
+        racquetball-style court — and brings the walls into play.
+        The compact court, quick reactions, and unexpected angles
+        create a fast, exciting version of the game we love.
+    </p>
 
 
-            <div class="feature-card">
+    <div class="features">
 
-                <h3>FAST PACED</h3>
+        <div class="feature-card">
 
-                <p>
-                    A smaller playing area means quick reactions,
-                    fast rallies, and plenty of action.
-                </p>
+            <div class="feature-number">01</div>
 
-            </div>
+            <h3>WALLS IN PLAY</h3>
 
-
-            <div class="feature-card">
-
-                <h3>COMMUNITY</h3>
-
-                <p>
-                    Volleyholics brings players together for
-                    competitive games, tournaments, and a fun
-                    volleyball community.
-                </p>
-
-            </div>
+            <p>
+                The walls become part of the action, opening up
+                creative plays, rebounds, and angles you don't
+                normally see on a traditional volleyball court.
+            </p>
 
         </div>
 
-    </section>
+
+        <div class="feature-card">
+
+            <div class="feature-number">02</div>
+
+            <h3>FAST-PACED</h3>
+
+            <p>
+                With less space between players, the ball comes
+                back quickly. Expect fast rallies, quick reactions,
+                and very little downtime.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-number">03</div>
+
+            <h3>UNIQUE ANGLES</h3>
+
+            <p>
+                The enclosed court changes how you attack and
+                defend. Shots can develop from angles that simply
+                don't exist in traditional volleyball.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-number">04</div>
+
+            <h3>VOLLEYBALL SKILLS</h3>
+
+            <p>
+                Passing, setting, attacking, blocking, and
+                communication are still at the heart of the game —
+                just with a Wallyball twist.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
 
 
 
