@@ -591,7 +591,241 @@
             }
         
         }
-
+            /* WALLYBALL EVENT */
+            
+            .events {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 90px 6%;
+                text-align: center;
+            }
+            
+            .event-label {
+                margin-bottom: 8px;
+            
+                color: #888;
+                font-size: 11px;
+                font-weight: 900;
+                letter-spacing: 4px;
+            }
+            
+            .events > h2 {
+                margin-bottom: 8px;
+            
+                color: #39ff14;
+                font-size: clamp(32px, 5vw, 46px);
+                font-weight: 900;
+                letter-spacing: 2px;
+            }
+            
+            .event-subtitle {
+                margin-bottom: 40px;
+            
+                color: #aaa;
+                font-size: 16px;
+            }
+            
+            
+            .wallyball-event-card {
+                display: grid;
+                grid-template-columns: 140px 1fr auto;
+                align-items: center;
+                gap: 35px;
+            
+                padding: 35px;
+            
+                text-align: left;
+            
+                background:
+                    linear-gradient(
+                        135deg,
+                        #101718,
+                        #080a0b
+                    );
+            
+                border: 1px solid rgba(57,255,20,.25);
+                border-radius: 16px;
+            
+                box-shadow:
+                    0 0 30px rgba(57,255,20,.06);
+            }
+            
+            
+            /* DATE */
+            
+            .wallyball-event-date {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            
+                padding: 20px;
+            
+                border-right: 1px solid rgba(57,255,20,.20);
+            }
+            
+            .event-month {
+                color: #39ff14;
+            
+                font-size: 16px;
+                font-weight: 900;
+                letter-spacing: 3px;
+            }
+            
+            .event-day {
+                color: white;
+            
+                font-size: 58px;
+                font-weight: 900;
+                line-height: 1;
+            }
+            
+            .event-year {
+                margin-top: 5px;
+            
+                color: #777;
+                font-size: 13px;
+            }
+            
+            
+            /* INFORMATION */
+            
+            .wallyball-event-info h3 {
+                margin-bottom: 20px;
+            
+                color: white;
+            
+                font-size: 25px;
+                font-weight: 900;
+            }
+            
+            .wallyball-event-details p {
+                margin: 9px 0;
+            
+                color: #bbb;
+                font-size: 14px;
+            }
+            
+            .wallyball-event-details strong {
+                color: white;
+            }
+            
+            .wallyball-event-details span {
+                color: #888;
+            }
+            
+            .event-prize {
+                color: #39ff14 !important;
+                font-weight: 900;
+            }
+            
+            
+            /* BUTTONS */
+            
+            .wallyball-event-actions {
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+            
+                min-width: 170px;
+            }
+            
+            .wallyball-register-button,
+            .wallyball-rules-button {
+                padding: 14px 20px;
+            
+                border-radius: 7px;
+            
+                font-size: 12px;
+                font-weight: 900;
+                letter-spacing: 1px;
+            
+                cursor: pointer;
+            
+                transition: .2s;
+            }
+            
+            .wallyball-register-button {
+                border: 1px solid #39ff14;
+            
+                background: #39ff14;
+                color: #050505;
+            }
+            
+            .wallyball-register-button:hover {
+                transform: translateY(-2px);
+            
+                box-shadow:
+                    0 0 20px rgba(57,255,20,.20);
+            }
+            
+            .wallyball-rules-button {
+                border: 1px solid #39ff14;
+            
+                background: transparent;
+                color: #39ff14;
+            }
+            
+            .wallyball-rules-button:hover {
+                background: rgba(57,255,20,.08);
+            }
+            
+            
+            /* BOTTOM BAR */
+            
+            .wallyball-event-footer {
+                display: flex;
+                justify-content: space-around;
+                gap: 20px;
+            
+                padding: 18px 25px;
+            
+                border: 1px solid #1b1b1b;
+                border-top: none;
+            
+                border-radius: 0 0 12px 12px;
+            
+                color: #888;
+            
+                font-size: 11px;
+                font-weight: 900;
+                letter-spacing: 1px;
+            }
+            
+            
+            /* MOBILE */
+            
+            @media (max-width: 700px) {
+            
+                .wallyball-event-card {
+                    grid-template-columns: 1fr;
+            
+                    gap: 25px;
+            
+                    padding: 25px;
+                }
+            
+                .wallyball-event-date {
+                    border-right: none;
+                    border-bottom: 1px solid rgba(57,255,20,.20);
+            
+                    padding-bottom: 25px;
+                }
+            
+                .wallyball-event-info {
+                    text-align: center;
+                }
+            
+                .wallyball-event-actions {
+                    width: 100%;
+                }
+            
+                .wallyball-event-footer {
+                    flex-direction: column;
+                    align-items: center;
+                }
+            
+            }
     </style>
 
 </head>
@@ -791,30 +1025,132 @@
 
 
 
-    <!-- EVENTS -->
+<!-- EVENTS -->
 
-    <section class="events" id="events">
+<section class="events" id="events">
 
-        <h2>
-            WALLYBALL EVENTS
-        </h2>
+    <p class="event-label">
+        NEXT EVENT
+    </p>
 
-        <div class="coming-soon">
+    <h2>
+        WALLYBALL TOURNAMENT
+    </h2>
 
-            <h3>
-                MORE EVENTS COMING SOON 🏐
-            </h3>
+    <p class="event-subtitle">
+        DMV Wallyball × Volleyholics
+    </p>
 
-            <p>
-                Upcoming Volleyholics Wallyball sessions and
-                tournaments will be posted here.
-            </p>
-            <h3>
-                NOV Tournament comming soon 🏐
-            </h3>
+
+    <div class="wallyball-event-card">
+
+        <!-- DATE -->
+
+        <div class="wallyball-event-date">
+
+            <span class="event-month">
+                NOV
+            </span>
+
+            <span class="event-day">
+                14
+            </span>
+
+            <span class="event-year">
+                2026
+            </span>
+
         </div>
 
-    </section>
+
+        <!-- EVENT INFORMATION -->
+
+        <div class="wallyball-event-info">
+
+            <h3>
+                DMV Wallyball × Volleyholics Tournament
+            </h3>
+
+
+            <div class="wallyball-event-details">
+
+                <p>
+                    🕙 <strong>10:00 AM</strong>
+                </p>
+
+                <p>
+                    📍 <strong>Providence Rec Center</strong>
+                    <br>
+                    <span>
+                        7525 Marc Dr, Falls Church, VA 22042
+                    </span>
+                </p>
+
+                <p>
+                    🏐 <strong>4v4 B/BB</strong>
+                    &nbsp;•&nbsp;
+                    <strong>3v3 Open</strong>
+                </p>
+
+                <p>
+                    💵 <strong>$60 per team</strong>
+                </p>
+
+                <p>
+                    👥 <strong>10 Team Limit</strong>
+                </p>
+
+                <p class="event-prize">
+                    🏆 Merch + Medals
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- BUTTONS -->
+
+        <div class="wallyball-event-actions">
+
+            <button
+                type="button"
+                class="wallyball-register-button"
+                id="open-wallyball-registration"
+            >
+                REGISTER →
+            </button>
+
+            <button
+                type="button"
+                class="wallyball-rules-button"
+                id="open-event-rules"
+            >
+                VIEW RULES
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="wallyball-event-footer">
+
+        <span>
+            🏐 TWO DIVISIONS
+        </span>
+
+        <span>
+            🏆 MERCH + MEDALS
+        </span>
+
+        <span>
+            👽 VOLLEYHOLICS
+        </span>
+
+    </div>
+
+</section>
 
 <!-- WALLYBALL RULES POPUP -->
 
@@ -1098,6 +1434,8 @@
 
     const openRulesButton =
         document.getElementById('open-rules-button');
+    const openEventRules =
+    document.getElementById('open-event-rules');
 
     const closeRulesButton =
         document.getElementById('rules-close');
@@ -1135,7 +1473,11 @@
         openRules();
 
     });
-
+    openEventRules.addEventListener('click', () => {
+    
+        openRules();
+    
+    });
 
     closeRulesButton.addEventListener('click', () => {
 
