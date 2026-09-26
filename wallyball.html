@@ -116,79 +116,29 @@
 
         /* HERO */
 
-/* WALLYBALL HERO */
-
+        /* WALLYBALL HERO */
+        
         .wallyball-hero {
-            min-height: 75vh;
+            width: 100%;
+            padding: 90px 0 40px;
         
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        
-            padding: 130px 20px 70px;
-        
-            text-align: center;
-        
-            background:
-                radial-gradient(
-                    circle at center,
-                    rgba(57,255,20,.14),
-                    transparent 48%
-                ),
-                #050505;
-        }
-        
-        .wallyball-hero-content {
             display: flex;
             flex-direction: column;
             align-items: center;
         
+            background: #050505;
+        }
+        
+        .wallyball-hero-image {
+            display: block;
             width: 100%;
-        }
-        
-        .wallyball-hero .wallyball-label {
-            margin: 0 0 10px;
-        
-            color: #aaa;
-            font-size: 12px;
-            font-weight: 900;
-            letter-spacing: 5px;
-            text-transform: uppercase;
-        }
-        
-        .wallyball-hero h1 {
-            color: #39ff14;
-        
-            font-size: clamp(55px, 10vw, 120px);
-            font-weight: 900;
-            letter-spacing: 5px;
-            line-height: .95;
-        
-            text-shadow:
-                0 0 20px rgba(57,255,20,.18),
-                0 0 45px rgba(57,255,20,.08);
-        }
-        
-        .wallyball-hero h2 {
-            margin-top: 18px;
-        
-            font-size: clamp(20px, 3vw, 34px);
-            letter-spacing: 3px;
-        }
-        
-        .wallyball-hero .wallyball-intro {
-            max-width: 700px;
-            margin-top: 25px;
-        
-            color: #aaa;
-            font-size: 18px;
-            line-height: 1.7;
+            height: auto;
         }
         
         .wallyball-hero-button {
             display: inline-block;
         
-            margin-top: 30px;
+            margin-top: 28px;
             padding: 15px 28px;
         
             background: #39ff14;
@@ -213,7 +163,6 @@
                 0 0 20px rgba(57,255,20,.25),
                 0 0 40px rgba(57,255,20,.12);
         }
-
 
         /* CONTENT */
 
@@ -437,39 +386,21 @@
 
 </nav>
 
-
-
-    <!-- HERO -->
-
 <!-- HERO -->
 
-        <section class="wallyball-hero">
-        
-            <div class="wallyball-hero-content">
-        
-                <p class="wallyball-label">
-                    VOLLEYHOLICS PRESENTS
-                </p>
-        
-                <h1>WALLYBALL</h1>
-        
-                <h2>
-                    VOLLEYBALL WITH WALLS.
-                </h2>
-        
-                <p class="wallyball-intro">
-                    Fast rallies. Crazy angles. Nonstop action.
-                    <br>
-                    Welcome to Wallyball with Volleyholics.
-                </p>
-        
-                <a href="#about-wallyball" class="wallyball-hero-button">
-                    DISCOVER WALLYBALL ↓
-                </a>
-        
-            </div>
-        
-        </section>
+    <section class="wallyball-hero">
+    
+        <img
+            src="wallyball_banner.png"
+            alt="Volleyholics Presents Wallyball - Volleyball With Walls"
+            class="wallyball-hero-image"
+        >
+    
+        <a href="#about-wallyball" class="wallyball-hero-button">
+            DISCOVER WALLYBALL ↓
+        </a>
+    
+    </section>
 
 
 
