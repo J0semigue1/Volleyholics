@@ -912,7 +912,55 @@
                 box-shadow:
                     0 0 30px rgba(57,255,20,.06);
             }
+            /* MEETUP SECTION */
+
+            .meetup-section {
+                max-width: 900px;
+                margin: 0 auto 80px;
+                padding: 45px 25px;
+                text-align: center;
             
+                background: linear-gradient(
+                    135deg, #101718, #090b0c
+                );
+            
+                border: 1px solid rgba(57,255,20,.25);
+                border-radius: 16px;
+            }
+            
+            .meetup-section h2 {
+                color: #39ff14;
+                font-size: clamp(24px, 4vw, 34px);
+                margin-bottom: 18px;
+            }
+            
+            .meetup-section p {
+                color: #bbb;
+                line-height: 1.8;
+                margin-bottom: 28px;
+            }
+            
+            .meetup-button {
+                display: inline-block;
+                padding: 15px 28px;
+            
+                background: #39ff14;
+                color: #050505;
+            
+                border-radius: 7px;
+                text-decoration: none;
+            
+                font-size: 13px;
+                font-weight: 900;
+                letter-spacing: 1px;
+            
+                transition: .2s;
+            }
+            
+            .meetup-button:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 0 25px rgba(57,255,20,.3);
+            }
             
             /* DATE */
             
@@ -1160,6 +1208,27 @@
             >
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 00.5 6.2 31 31 0 000 12a31 31 0 00.5 5.8 3 3 0 002.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 002.1-2.1A31 31 0 0024 12a31 31 0 00-.5-5.8zM9.6 15.6V8.4L15.8 12l-6.2 3.6z"/>
+                </svg>
+            </a>
+            <a
+                href="https://www.meetup.com/fairfax-herndon-rec-wallyball-meetup"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Meetup"
+                title="Meetup"
+            >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <text
+                        x="12"
+                        y="16"
+                        text-anchor="middle"
+                        font-size="12"
+                        font-weight="900"
+                        fill="#050505"
+                    >
+                        M
+                    </text>
                 </svg>
             </a>
 
@@ -1445,7 +1514,29 @@
 
     </div>
 
-</section>
+    </section>
+        <!-- MEETUP PICKUP GAMES -->
+    
+    <section class="meetup-section">
+    
+        <h2>LOOKING FOR PICKUP GAMES?</h2>
+    
+        <p>
+            Join our Wallyball community on Meetup to find
+            upcoming pickup games, meet new players,
+            and get on the court!
+        </p>
+    
+        <a
+            href="https://www.meetup.com/fairfax-herndon-rec-wallyball-meetup/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="meetup-button"
+        >
+            JOIN US ON MEETUP →
+        </a>
+    
+    </section>
         <!-- REGISTRATION -->
         
         <section id="registration">
