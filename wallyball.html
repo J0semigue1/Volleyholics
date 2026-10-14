@@ -961,7 +961,163 @@
                 transform: translateY(-2px);
                 box-shadow: 0 0 25px rgba(57,255,20,.3);
             }
+            /* WALLYBALL LEAGUE */
+
+            .league-section {
+                max-width: 1100px;
+                margin: 0 auto 90px;
+                padding: 60px 35px;
+                text-align: center;
             
+                background:
+                    radial-gradient(
+                        circle at top,
+                        rgba(57,255,20,.08),
+                        transparent 45%
+                    ),
+                    linear-gradient(
+                        135deg,
+                        #101718,
+                        #080a0b
+                    );
+            
+                border: 1px solid rgba(57,255,20,.30);
+                border-radius: 18px;
+            
+                box-shadow:
+                    0 0 35px rgba(57,255,20,.06);
+            }
+            
+            .league-label {
+                margin-bottom: 10px;
+            
+                color: #888;
+                font-size: 11px;
+                font-weight: 900;
+                letter-spacing: 4px;
+            }
+            
+            .league-section h2 {
+                margin-bottom: 20px;
+            
+                color: #39ff14;
+                font-size: clamp(32px, 5vw, 46px);
+                font-weight: 900;
+                letter-spacing: 2px;
+            }
+            
+            .league-intro {
+                max-width: 700px;
+                margin: 0 auto 40px;
+            
+                color: #bbb;
+                font-size: 16px;
+                line-height: 1.8;
+            }
+            
+            
+            /* LEAGUE FEATURES */
+            
+            .league-features {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 15px;
+            
+                margin: 35px 0;
+            }
+            
+            .league-feature {
+                padding: 25px 15px;
+            
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 12px;
+            
+                background: #090c0d;
+            
+                border: 1px solid #222;
+                border-radius: 12px;
+            
+                transition: .2s;
+            }
+            
+            .league-feature:hover {
+                transform: translateY(-4px);
+                border-color: #39ff14;
+            }
+            
+            .league-feature span {
+                font-size: 28px;
+            }
+            
+            .league-feature strong {
+                color: white;
+                font-size: 11px;
+                letter-spacing: 1px;
+            }
+            
+            
+            /* LEAGUE NOTE */
+            
+            .league-note {
+                margin: 30px auto;
+            
+                color: #888;
+                font-size: 13px;
+                line-height: 1.7;
+            }
+            
+            
+            /* INTEREST BUTTON */
+            
+            .league-interest-button {
+                padding: 15px 30px;
+            
+                border: 1px solid #39ff14;
+                border-radius: 7px;
+            
+                background: #39ff14;
+                color: #050505;
+            
+                font-size: 13px;
+                font-weight: 900;
+                letter-spacing: 1px;
+            
+                cursor: pointer;
+                transition: .2s;
+            }
+            
+            .league-interest-button:hover {
+                transform: translateY(-2px);
+            
+                box-shadow:
+                    0 0 25px rgba(57,255,20,.30);
+            }
+            
+            
+            /* LEAGUE MOBILE */
+            
+            @media (max-width: 700px) {
+            
+                .league-section {
+                    margin: 0 15px 70px;
+                    padding: 45px 20px;
+                }
+            
+                .league-features {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+            
+            }
+            
+            @media (max-width: 430px) {
+            
+                .league-features {
+                    grid-template-columns: 1fr;
+                }
+            
+            }
             /* DATE */
             
             .wallyball-event-date {
