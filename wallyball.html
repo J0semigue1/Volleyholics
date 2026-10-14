@@ -3001,6 +3001,86 @@ if (leagueInterestPopup) {
 
 }
     // =========================
+// WALLYBALL LEAGUE INTEREST SUBMISSION
+// =========================
+
+const leagueInterestForm =
+    document.getElementById('league-interest-form');
+
+
+if (leagueInterestForm) {
+    const leagueSubmitButton =
+    leagueInterestForm.querySelector('.league-submit-button');
+
+    leagueInterestForm.addEventListener('submit', async function(event) {
+
+        event.preventDefault();
+
+        const originalButtonText =
+            leagueSubmitButton.textContent;
+
+        leagueSubmitButton.textContent = 'SENDING...';
+        leagueSubmitButton.disabled = true;
+
+        const formData =
+            new FormData(leagueInterestForm);
+
+
+        try {
+
+            const response =
+                await fetch(leagueInterestForm.action, {
+
+                    method: 'POST',
+                    body: formData,
+
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+
+                });
+
+
+            if (response.ok) {
+
+                leagueInterestForm.reset();
+
+                leagueSubmitButton.textContent =
+                    '✓ INTEREST RECEIVED!';
+
+                setTimeout(function() {
+
+                    closeLeaguePopup();
+
+                    leagueSubmitButton.textContent =
+                        originalButtonText;
+
+                }, 1800);
+
+            } else {
+
+                alert(
+                    'Something went wrong. Please try again.'
+                );
+
+            }
+
+        } catch (error) {
+
+            alert(
+                'Unable to send your information. Please check your connection and try again.'
+            );
+
+        } finally {
+
+            leagueSubmitButton.disabled = false;
+
+        }
+
+    });
+
+}
+    // =========================
     // ESCAPE KEY
     // =========================
 
